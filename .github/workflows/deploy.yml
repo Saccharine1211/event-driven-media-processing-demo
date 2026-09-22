@@ -1,0 +1,35 @@
+name: Deploy development stack
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: CDK stage to deploy
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: development
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - run: npm ci
+      - run: npm run synth -- --context stage=${{ inputs.stage }}
+      - run: npx cdk deploy --context stage=${{ inputs.stage }} --require-approval never
