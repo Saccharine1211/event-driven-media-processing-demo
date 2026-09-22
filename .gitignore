@@ -1,0 +1,11 @@
+node_modules/
+cdk.out/
+coverage/
+dist/
+.env
+.env.*
+!.env.example
+benchmark-results/*.json
+!benchmark-results/.gitkeep
+*.log
+.DS_Store

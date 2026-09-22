@@ -1,0 +1,47 @@
+{
+  "name": "event-driven-media-processing-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Clean-room event-driven media metadata processing demo on AWS",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --check .",
+    "format:write": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "synth": "cdk synth",
+    "benchmark": "tsx scripts/benchmark.ts"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.1137.0",
+    "@aws-sdk/client-dynamodb": "^3.1137.0",
+    "@aws-sdk/client-s3": "^3.1137.0",
+    "@aws-sdk/client-sqs": "^3.1137.0",
+    "@aws-sdk/lib-dynamodb": "^3.1137.0",
+    "@aws-sdk/s3-request-presigner": "^3.1137.0",
+    "aws-cdk-lib": "^2.270.0",
+    "constructs": "^10.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/aws-lambda": "^8.10.163",
+    "@types/node": "^26.6.2",
+    "@vitest/coverage-v8": "^5.0.1",
+    "aws-cdk": "^2.1142.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.8",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vitest": "^5.0.1"
+  }
+}
